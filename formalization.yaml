@@ -1,0 +1,50 @@
+# formalization.yaml (v0.1): repo-root metadata for formalization projects.
+# [required] fields should be filled; everything else is optional.
+
+# project - the formalization itself (not the source).
+project:
+  name: ""                     # [required]
+  authors: []                  # [required] who did the formalization
+  license: ""                  # [required]
+
+# sources - what was formalized. List of papers/textbooks/blueprints.
+# title+authors required, others optional.
+sources:                       # [required]
+  - title: ""                  # [required]
+    authors: []                # [required]
+    id: ""                     # [required] link, DOI, or arXiv ID (with version)
+    type: ""
+    license: ""
+    author_contacted: ""       # yes | no | n/a
+    prior_work: ""             # URL/citation of earlier formalization built upon
+
+# how it was produced
+automation:
+  method: ""                   # [required] manual | copilot | agent | autonomous
+  models: []                   # e.g. ["claude-opus-4-7", "gpt-5"]
+  framework: ""
+  cost:                        #
+    wall_time: ""              # e.g. "3 weeks" or "240 GPU-hours"
+    api_spend_usd: ""
+    hardware: ""               # GPU count, "API-only", "my laptop", whatever's relevant
+  notes: ""                    # freeform
+
+# project status
+status:
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []                   # list all axioms used (including standard axioms such as `Quot.sound`)
+
+# fidelity:
+fidelity:
+  divergences: ""              # places the formalization deviates from source - eg generalisations, weakened hypotheses, renamed lemmas
+
+# human review status
+review:
+  status: ""                   # [required] unchecked | self-assessed | peer-reviewed | author-verified
+  reviewers: []
+
+# alignment - freeform yaml: how source statements map to formal declarations.
+# e.g. a blueprint link, or a per-statement table.
+alignment: {}
+
