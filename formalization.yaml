@@ -1,5 +1,7 @@
-# formalization.yaml (v0.1): repo-root metadata for formalization projects.
+# formalization.yaml (v0.2): repo-root metadata for formalization projects.
 # [required] fields should be filled; everything else is optional.
+
+version: "v0.2"
 
 # project - the formalization itself (not the source).
 project:
@@ -9,40 +11,47 @@ project:
 
 # sources - what was formalized. List of papers/textbooks/blueprints.
 # title+authors required, others optional.
-sources:                       # [required]
+sources:                       # [required] list of sources
   - title: ""                  # [required]
     authors: []                # [required]
     id: ""                     # [required] link, DOI, or arXiv ID (with version)
-    type: ""
+    type: ""                   # kind of source (textbook, preprint, blueprint, ...)
     license: ""
     author_contacted: ""       # yes | no | n/a
     prior_work: ""             # URL/citation of earlier formalization built upon
 
 # how it was produced
 automation:
-  method: ""                   # [required] manual | copilot | agent | autonomous
+  method: ""                   # [required] manual | copilot | mixed | agent | autonomous
   models: []                   # e.g. ["claude-opus-4-7", "gpt-5"]
-  framework: ""
-  cost:                        #
+  framework: ""                # e.g. "Claude Code", "OpenClaw"
+  cost:
     wall_time: ""              # e.g. "3 weeks" or "240 GPU-hours"
-    api_spend_usd: ""
+    spend_usd: ""              # e.g. "$10 API credits" or "2x $20 subscriptions to Claude Code"
     hardware: ""               # GPU count, "API-only", "my laptop", whatever's relevant
-  notes: ""                    # freeform
+  notes: ""                    # freeform, may include more details on the process and interaction setup, eg prompts
 
 # project status
 status:
+  scope: ""                    # describe the scope of the project
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: []                   # list all axioms used (including standard axioms such as `Quot.sound`)
+  main_results:                # list the main results of the project
+  - declaration: ""            # the declaration which proves this main result
+    file: ""                   # the file containing the declaration
+    sorry_count: ""            # the number of sorries used for this declaration
+    axioms: []                 # all axioms used for this result
 
-# fidelity:
+# fidelity
 fidelity:
-  divergences: ""              # places the formalization deviates from source - eg generalisations, weakened hypotheses, renamed lemmas
+  divergences: ""              # places the formalization deviates from sources - eg generalizations, weakened hypotheses, renamed lemmas
 
-# human review status
+# review status
 review:
-  status: ""                   # [required] unchecked | self-assessed | peer-reviewed | author-verified
+  status: ""                   # [required] unchecked | agent-reviewed | self-assessed | peer-reviewed | author-verified
   reviewers: []
+  notes: ""                    # more details on the review process
 
 # alignment - freeform yaml: how source statements map to formal declarations.
 # e.g. a blueprint link, or a per-statement table.
