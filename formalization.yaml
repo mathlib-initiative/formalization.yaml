@@ -25,7 +25,7 @@ automation:
   method: ""                   # [required] manual | copilot | mixed | agent | autonomous
   models: []                   # e.g. ["claude-opus-4-7", "gpt-5"]
   framework: ""                # e.g. "Claude Code", "OpenClaw"
-  cost:                        #
+  cost:
     wall_time: ""              # e.g. "3 weeks" or "240 GPU-hours"
     spend_usd: ""              # e.g. "$10 API credits" or "2x $20 subscriptions to Claude Code"
     hardware: ""               # GPU count, "API-only", "my laptop", whatever's relevant
@@ -37,7 +37,7 @@ status:
   sorry_in_definitions: 0
   axioms: []                   # list all axioms used (including standard axioms such as `Quot.sound`)
 
-# fidelity:
+# fidelity
 fidelity:
   divergences: ""              # places the formalization deviates from sources - eg generalizations, weakened hypotheses, renamed lemmas
 
