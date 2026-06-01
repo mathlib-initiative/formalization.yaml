@@ -1,4 +1,4 @@
-# formalization.yaml (v0.1): repo-root metadata for formalization projects.
+# formalization.yaml (v0.2): repo-root metadata for formalization projects.
 # [required] fields should be filled; everything else is optional.
 
 version: "v0.2"
