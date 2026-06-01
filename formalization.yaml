@@ -35,7 +35,11 @@ status:
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: []                   # list all axioms used (including standard axioms such as `Quot.sound`)
-  main_result: []              # list the main results of the project
+  main_results:                # list the main results of the project
+  - declaration: ""            # the declaration which proves this main result
+     file: ""                  # the file containing the declaration
+     sorry_count: ""           # the number of sorries used for this declaration
+     axioms: []                # all axioms used for this result
 
 # fidelity:
 fidelity:
