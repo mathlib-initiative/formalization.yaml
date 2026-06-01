@@ -24,7 +24,7 @@ sources:                       # [required]
 automation:
   method: ""                   # [required] manual | copilot | agent | autonomous
   models: []                   # e.g. ["claude-opus-4-7", "gpt-5"]
-  framework: ""
+  framework: ""                # e.g. "Claude Code", "OpenClaw"
   cost:                        #
     wall_time: ""              # e.g. "3 weeks" or "240 GPU-hours"
     api_spend_usd: ""
