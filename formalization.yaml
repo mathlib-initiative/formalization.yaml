@@ -39,10 +39,11 @@ status:
 fidelity:
   divergences: ""              # places the formalization deviates from source - eg generalisations, weakened hypotheses, renamed lemmas
 
-# human review status
+# review status
 review:
-  status: ""                   # [required] unchecked | self-assessed | peer-reviewed | author-verified
+  status: ""                   # [required] unchecked | agent-reviewed | self-assessed | peer-reviewed | author-verified
   reviewers: []
+  notes: ""                    # more details on the review process
 
 # alignment - freeform yaml: how source statements map to formal declarations.
 # e.g. a blueprint link, or a per-statement table.
