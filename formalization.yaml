@@ -31,9 +31,11 @@ automation:
 
 # project status
 status:
+  scope: ""                    # describe the scope of the project
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: []                   # list all axioms used (including standard axioms such as `Quot.sound`)
+  main_result: []              # list the main results of the project
 
 # fidelity:
 fidelity:
