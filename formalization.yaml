@@ -20,14 +20,14 @@ sources:                       # [required]
 
 # how it was produced
 automation:
-  method: ""                   # [required] manual | copilot | agent | autonomous
+  method: ""                   # [required] manual | copilot | mixed | agent | autonomous
   models: []                   # e.g. ["claude-opus-4-7", "gpt-5"]
   framework: ""
   cost:                        #
     wall_time: ""              # e.g. "3 weeks" or "240 GPU-hours"
     api_spend_usd: ""
     hardware: ""               # GPU count, "API-only", "my laptop", whatever's relevant
-  notes: ""                    # freeform
+  notes: ""                    # freeform, may include more details on the process and interaction setup, eg prompts
 
 # project status
 status:
