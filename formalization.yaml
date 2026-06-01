@@ -11,11 +11,11 @@ project:
 
 # sources - what was formalized. List of papers/textbooks/blueprints.
 # title+authors required, others optional.
-sources:                       # [required]
+sources:                       # [required] list of sources
   - title: ""                  # [required]
     authors: []                # [required]
     id: ""                     # [required] link, DOI, or arXiv ID (with version)
-    type: ""
+    type: ""                   # kind of source (textbook, preprint, blueprint, ...)
     license: ""
     author_contacted: ""       # yes | no | n/a
     prior_work: ""             # URL/citation of earlier formalization built upon
