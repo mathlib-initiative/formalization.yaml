@@ -27,7 +27,7 @@ automation:
   framework: ""                # e.g. "Claude Code", "OpenClaw"
   cost:                        #
     wall_time: ""              # e.g. "3 weeks" or "240 GPU-hours"
-    api_spend_usd: ""
+    spend_usd: ""              # e.g. "$10 API credits" or "2x $20 subscriptions to Claude Code"
     hardware: ""               # GPU count, "API-only", "my laptop", whatever's relevant
   notes: ""                    # freeform, may include more details on the process and interaction setup, eg prompts
 
