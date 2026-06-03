@@ -23,21 +23,6 @@ sources:                       # [required] list of sources
     author_contacted: ""       # yes | no | n/a
     prior_work: ""             # URL/citation of earlier formalization built upon
 
-# how it was produced. Extra per-entry fields are allowed.
-automation:                    # [required]
-  methods:                     # one entry per distinct phase/run/tool
-    - method: ""               # [required] manual | copilot | agent | autonomous | other
-      models: []               # e.g. ["claude-opus-4-7", "gpt-5"]
-      framework: ""            # e.g. "Claude Code", "OpenClaw", "LeanCopilot"
-      tool_setup: ""           # tools, harnesses, plugins, orchestration, customizations
-      cost:
-        wall_time: ""          # e.g. "3 weeks" or "240 GPU-hours"
-        spend_usd: ""          # spend for this method, e.g. "$10 API credits"
-        hardware: ""           # GPU count, "API-only", "my laptop", whatever's relevant
-      prompting_notes: ""      # freeform notes/examples about the prompts or task specs used
-  spend_usd: ""                # total spend across the project, e.g. "$10 API credits" or "subscription-based usage"
-  notes: ""                    # freeform details on the overall process and interaction setup
-
 # project status
 status:
   scope: ""                    # describe the scope of the project
@@ -53,6 +38,21 @@ status:
     literature_dependencies:   # results this result relies on but does not prove, assumed from the literature
     - statement: ""            # the result being relied on
       source: ""               # the specific source it comes from (reference a `sources` entry)
+
+# how it was produced. Extra per-entry fields are allowed.
+automation:                    # [required]
+  methods:                     # one entry per distinct phase/run/tool
+    - method: ""               # [required] manual | copilot | agent | autonomous | other
+      models: []               # e.g. ["claude-opus-4-7", "gpt-5"]
+      framework: ""            # e.g. "Claude Code", "OpenClaw", "LeanCopilot"
+      tool_setup: ""           # tools, harnesses, plugins, orchestration, customizations
+      cost:
+        wall_time: ""          # e.g. "3 weeks" or "240 GPU-hours"
+        spend_usd: ""          # spend for this method, e.g. "$10 API credits"
+        hardware: ""           # GPU count, "API-only", "my laptop", whatever's relevant
+      prompting_notes: ""      # freeform notes/examples about the prompts or task specs used
+  spend_usd: ""                # total spend across the project, e.g. "$10 API credits" or "subscription-based usage"
+  notes: ""                    # freeform details on the overall process and interaction setup
 
 # fidelity
 fidelity:
