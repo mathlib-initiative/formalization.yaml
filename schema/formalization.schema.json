@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json",
+  "title": "formalization.yaml (version dispatcher)",
+  "description": "Dispatches to the schema for the file's `version` (latest if unset).",
+  "type": "object",
+  "properties": {
+    "version": { "enum": ["v0.3"] }
+  },
+  "allOf": [
+    {
+      "if": { "required": ["version"], "properties": { "version": { "const": "v0.3" } } },
+      "then": { "$ref": "v0.3.schema.json" }
+    },
+    {
+      "if": { "not": { "required": ["version"] } },
+      "then": { "$ref": "v0.3.schema.json" }
+    },
+    {
+      "if": { "required": ["version"], "not": { "properties": { "version": { "type": "string" } } } },
+      "then": { "$ref": "v0.3.schema.json" }
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
 # formalization.yaml (v0.3): repo-root metadata for formalization projects.
 # Requiredness/conformance:
 #   - Fields marked [required] should be present and filled.
