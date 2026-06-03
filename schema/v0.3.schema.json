@@ -1,0 +1,231 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/v0.3.schema.json",
+  "title": "formalization.yaml (v0.3)",
+  "description": "Repo-root metadata schema for formalization projects (v0.3). Validates a filled-in formalization.yaml.",
+  "type": "object",
+  "$comment": "Permissive: extra keys allowed everywhere. Required fields use minLength/minItems so a blank template is invalid.",
+  "required": ["project", "sources", "automation", "review"],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "project": {
+      "type": "object",
+      "description": "the formalization itself (not the source)",
+      "required": ["name", "authors", "license"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "authors": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" },
+          "description": "who did the formalization"
+        },
+        "license": { "type": "string", "minLength": 1 }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "description": "what was formalized. List of papers/textbooks/blueprints/etc.",
+      "items": {
+        "type": "object",
+        "required": ["title", "authors", "id"],
+        "properties": {
+          "title": { "type": "string", "minLength": 1 },
+          "authors": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" }
+          },
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "link, DOI, or arXiv ID (with version)"
+          },
+          "type": {
+            "type": "string",
+            "description": "kind of source (textbook, preprint, blueprint, ...)"
+          },
+          "license": { "type": "string" },
+          "author_contacted": {
+            "type": "string",
+            "enum": ["", "yes", "no", "n/a"],
+            "description": "yes | no | n/a"
+          },
+          "prior_work": {
+            "type": "string",
+            "description": "URL/citation of earlier formalization built upon"
+          }
+        }
+      }
+    },
+    "automation": {
+      "type": "object",
+      "description": "how it was produced",
+      "required": ["methods"],
+      "properties": {
+        "methods": {
+          "type": "array",
+          "minItems": 1,
+          "description": "one entry per distinct phase/run/tool",
+          "items": {
+            "type": "object",
+            "required": ["method"],
+            "properties": {
+              "method": {
+                "type": "string",
+                "enum": ["manual", "copilot", "agent", "autonomous", "other"],
+                "description": "manual | copilot | agent | autonomous | other"
+              },
+              "models": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "e.g. [\"claude-opus-4-7\", \"gpt-5\"]"
+              },
+              "framework": {
+                "type": "string",
+                "description": "e.g. \"Claude Code\", \"OpenClaw\", \"LeanCopilot\""
+              },
+              "tool_setup": {
+                "type": "string",
+                "description": "tools, harnesses, plugins, orchestration, customizations"
+              },
+              "cost": {
+                "type": "object",
+                "properties": {
+                  "wall_time": {
+                    "type": ["string", "number"],
+                    "description": "e.g. \"3 weeks\" or \"240 GPU-hours\""
+                  },
+                  "spend_usd": {
+                    "type": ["string", "number"],
+                    "description": "spend for this method, e.g. \"$10 API credits\""
+                  },
+                  "hardware": {
+                    "type": ["string", "number"],
+                    "description": "GPU count, \"API-only\", \"my laptop\", whatever's relevant"
+                  }
+                }
+              },
+              "prompting_notes": {
+                "type": "string",
+                "description": "freeform notes/examples about the prompts or task specs used"
+              }
+            }
+          }
+        },
+        "spend_usd": {
+          "type": ["string", "number"],
+          "description": "total spend across the project, e.g. \"$10 API credits\" or \"subscription-based usage\""
+        },
+        "notes": {
+          "type": "string",
+          "description": "freeform details on the overall process and interaction setup"
+        }
+      }
+    },
+    "status": {
+      "type": "object",
+      "description": "project status",
+      "properties": {
+        "scope": {
+          "type": "string",
+          "description": "describe the scope of the project"
+        },
+        "sorry_count": { "type": "integer", "minimum": 0 },
+        "sorry_in_definitions": { "type": "integer", "minimum": 0 },
+        "axioms": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "list all axioms used (including standard axioms such as `Quot.sound`)"
+        },
+        "main_results": {
+          "type": "array",
+          "description": "list the main results of the project",
+          "items": {
+            "type": "object",
+            "properties": {
+              "declaration": {
+                "type": "string",
+                "description": "declaration proving this main result"
+              },
+              "file": {
+                "type": "string",
+                "description": "file containing the declaration"
+              },
+              "sorry_count": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "number of sorries used for this declaration"
+              },
+              "axioms": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "axioms used for this result"
+              },
+              "comparator_config": {
+                "type": "string",
+                "description": "path to the comparator (leanprover/comparator) JSON config that verifies this result"
+              },
+              "literature_dependencies": {
+                "type": "array",
+                "description": "results this result relies on but does not prove, assumed from the literature",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "statement": {
+                      "type": "string",
+                      "description": "the result being relied on"
+                    },
+                    "source": {
+                      "type": "string",
+                      "description": "the specific source it comes from (reference a `sources` entry)"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "fidelity": {
+      "type": "object",
+      "properties": {
+        "divergences": {
+          "type": "string",
+          "description": "places the formalization deviates from sources: generalizations, weakened hypotheses, renamed lemmas, etc."
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "description": "review status",
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "minLength": 1,
+          "description": "unchecked | agent-reviewed | self-assessed | peer-reviewed | author-verified | other/freeform"
+        },
+        "reviewers": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "notes": {
+          "type": "string",
+          "description": "more details on the review process"
+        }
+      }
+    },
+    "alignment": {
+      "description": "freeform YAML describing how source statements map to formal declarations. The structured table in the template is only a suggested shape; replace or extend as useful."
+    },
+    "acknowledgements": {
+      "type": "string",
+      "description": "optional credits for libraries, tools, discussions, etc."
+    }
+  }
+}
