@@ -1,7 +1,11 @@
-# formalization.yaml (v0.2): repo-root metadata for formalization projects.
-# [required] fields should be filled; everything else is optional.
+# formalization.yaml (v0.3): repo-root metadata for formalization projects.
+# Requiredness/conformance:
+#   - Fields marked [required] should be present and filled.
+#   - Fields not marked [required] are examples/recommended metadata only; they may be omitted.
+#   - Projects may add extra YAML keys at any level. Readers should tolerate unknown keys.
+# This is a lightweight reporting schema, not a closed validation schema.
 
-version: "v0.2"
+version: "v0.3"
 
 # project - the formalization itself (not the source).
 project:
@@ -9,8 +13,7 @@ project:
   authors: []                  # [required] who did the formalization
   license: ""                  # [required]
 
-# sources - what was formalized. List of papers/textbooks/blueprints.
-# title+authors required, others optional.
+# sources - what was formalized. List of papers/textbooks/blueprints/etc.
 sources:                       # [required] list of sources
   - title: ""                  # [required]
     authors: []                # [required]
@@ -20,17 +23,6 @@ sources:                       # [required] list of sources
     author_contacted: ""       # yes | no | n/a
     prior_work: ""             # URL/citation of earlier formalization built upon
 
-# how it was produced
-automation:
-  method: ""                   # [required] manual | copilot | mixed | agent | autonomous
-  models: []                   # e.g. ["claude-opus-4-7", "gpt-5"]
-  framework: ""                # e.g. "Claude Code", "OpenClaw"
-  cost:
-    wall_time: ""              # e.g. "3 weeks" or "240 GPU-hours"
-    spend_usd: ""              # e.g. "$10 API credits" or "2x $20 subscriptions to Claude Code"
-    hardware: ""               # GPU count, "API-only", "my laptop", whatever's relevant
-  notes: ""                    # freeform, may include more details on the process and interaction setup, eg prompts
-
 # project status
 status:
   scope: ""                    # describe the scope of the project
@@ -38,22 +30,50 @@ status:
   sorry_in_definitions: 0
   axioms: []                   # list all axioms used (including standard axioms such as `Quot.sound`)
   main_results:                # list the main results of the project
-  - declaration: ""            # the declaration which proves this main result
-    file: ""                   # the file containing the declaration
-    sorry_count: ""            # the number of sorries used for this declaration
-    axioms: []                 # all axioms used for this result
+  - declaration: ""            # declaration proving this main result
+    file: ""                   # file containing the declaration
+    sorry_count: 0             # number of sorries used for this declaration
+    axioms: []                 # axioms used for this result
+    comparator_config: ""      # path to the comparator (leanprover/comparator) JSON config that verifies this result
+    literature_dependencies:   # results this result relies on but does not prove, assumed from the literature
+    - statement: ""            # the result being relied on
+      source: ""               # the specific source it comes from (reference a `sources` entry)
+
+# how it was produced. Extra per-entry fields are allowed.
+automation:                    # [required]
+  methods:                     # one entry per distinct phase/run/tool
+    - method: ""               # [required] manual | copilot | agent | autonomous | other
+      models: []               # e.g. ["claude-opus-4-7", "gpt-5"]
+      framework: ""            # e.g. "Claude Code", "OpenClaw", "LeanCopilot"
+      tool_setup: ""           # tools, harnesses, plugins, orchestration, customizations
+      cost:
+        wall_time: ""          # e.g. "3 weeks" or "240 GPU-hours"
+        spend_usd: ""          # spend for this method, e.g. "$10 API credits"
+        hardware: ""           # GPU count, "API-only", "my laptop", whatever's relevant
+      prompting_notes: ""      # freeform notes/examples about the prompts or task specs used
+  spend_usd: ""                # total spend across the project, e.g. "$10 API credits" or "subscription-based usage"
+  notes: ""                    # freeform details on the overall process and interaction setup
 
 # fidelity
 fidelity:
-  divergences: ""              # places the formalization deviates from sources - eg generalizations, weakened hypotheses, renamed lemmas
+  divergences: ""              # places the formalization deviates from sources: generalizations, weakened hypotheses, renamed lemmas, etc.
 
 # review status
 review:
-  status: ""                   # [required] unchecked | agent-reviewed | self-assessed | peer-reviewed | author-verified
+  status: ""                   # [required] unchecked | agent-reviewed | self-assessed | peer-reviewed | author-verified | other/freeform
   reviewers: []
   notes: ""                    # more details on the review process
 
-# alignment - freeform yaml: how source statements map to formal declarations.
-# e.g. a blueprint link, or a per-statement table.
-alignment: {}
+# alignment - freeform YAML describing how source statements map to formal declarations.
+# The structured table below is only a suggested shape; replace or extend it as useful.
+alignment:
+  namespace: ""
+  statements:
+    - source: ""               # source theorem/lemma/definition/section
+      lean: ""                 # corresponding Lean declaration
+      module: ""               # corresponding Lean module/file
+      status: ""               # proved | literature-dependency | in-progress | not-formalized | other/freeform
+      note: ""
 
+# acknowledgements - optional credits for libraries, tools, discussions, etc.
+acknowledgements: ""
