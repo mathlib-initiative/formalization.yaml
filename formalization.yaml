@@ -23,19 +23,20 @@ sources:                       # [required] list of sources
     author_contacted: ""       # yes | no | n/a
     prior_work: ""             # URL/citation of earlier formalization built upon
 
-# how it was produced. Use one entry for the whole project, or multiple entries
-# for distinct phases/runs/tools. Extra per-entry fields are allowed.
-automation:                    # [required] list of production phases
-  - method: ""                 # [required] manual | copilot | mixed | agent | autonomous | other
-    models: []                 # e.g. ["claude-opus-4-7", "gpt-5"]
-    framework: ""              # e.g. "Claude Code", "OpenClaw", "LeanCopilot"
-    tool_setup: ""             # tools, harnesses, plugins, orchestration, customizations
-    cost:
-      wall_time: ""            # e.g. "3 weeks" or "240 GPU-hours"
-      spend_usd: ""            # e.g. "$10 API credits" or "subscription-based usage"
-      hardware: ""             # GPU count, "API-only", "my laptop", whatever's relevant
-    notes: ""                  # freeform details on the process and interaction setup
-    prompting_notes: ""        # freeform notes/examples about the prompts or task specs used
+# how it was produced. Extra per-entry fields are allowed.
+automation:                    # [required]
+  methods:                     # one entry per distinct phase/run/tool
+    - method: ""               # [required] manual | copilot | agent | autonomous | other
+      models: []               # e.g. ["claude-opus-4-7", "gpt-5"]
+      framework: ""            # e.g. "Claude Code", "OpenClaw", "LeanCopilot"
+      tool_setup: ""           # tools, harnesses, plugins, orchestration, customizations
+      cost:
+        wall_time: ""          # e.g. "3 weeks" or "240 GPU-hours"
+        spend_usd: ""          # spend for this method, e.g. "$10 API credits"
+        hardware: ""           # GPU count, "API-only", "my laptop", whatever's relevant
+      prompting_notes: ""      # freeform notes/examples about the prompts or task specs used
+  spend_usd: ""                # total spend across the project, e.g. "$10 API credits" or "subscription-based usage"
+  notes: ""                    # freeform details on the overall process and interaction setup
 
 # project status
 status:
@@ -48,8 +49,10 @@ status:
     file: ""                   # file containing the declaration
     sorry_count: 0             # number of sorries used for this declaration
     axioms: []                 # axioms used for this result
-    hypotheses: []             # named external inputs left for future formalization/discharge;
-                                # do not list ordinary theorem hypotheses/parameters
+    comparator_config: ""      # path to the comparator (leanprover/comparator) JSON config that verifies this result
+    literature_dependencies:   # results this result relies on but does not prove, assumed from the literature
+    - statement: ""            # the result being relied on
+      source: ""               # the specific source it comes from (reference a `sources` entry)
 
 # fidelity
 fidelity:
@@ -69,7 +72,7 @@ alignment:
     - source: ""               # source theorem/lemma/definition/section
       lean: ""                 # corresponding Lean declaration
       module: ""               # corresponding Lean module/file
-      status: ""               # proved | hypothesis | in-progress | not-formalized | other/freeform
+      status: ""               # proved | literature-dependency | in-progress | not-formalized | other/freeform
       note: ""
 
 # acknowledgements - optional credits for libraries, tools, discussions, etc.

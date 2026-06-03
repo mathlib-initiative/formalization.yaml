@@ -15,10 +15,10 @@ sources:                       # [required] list of sources
     authors: []                # [required]
     id: ""                     # [required] link, DOI, or arXiv ID (with version)
 
-# how it was produced. Use one entry for the whole project, or multiple entries
-# for distinct phases/runs/tools.
-automation:                    # [required] list of production phases
-  - method: ""                 # [required] manual | copilot | mixed | agent | autonomous | other
+# how it was produced. One entry per distinct phase/run/tool.
+automation:                    # [required]
+  methods:                     # [required] one entry per distinct phase/run/tool
+    - method: ""               # [required] manual | copilot | agent | autonomous | other
 
 # review status
 review:                        # [required]
