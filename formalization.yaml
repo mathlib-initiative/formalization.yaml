@@ -12,17 +12,37 @@ version: "v0.3"
 project:
   name: ""                     # [required]
   authors: []                  # [required] who did the formalization
+  responsible_maintainers: []  # people responsible for the formalization repository
   license: ""                  # [required]
 
-# sources - what was formalized. List of papers/textbooks/blueprints/etc.
-sources:                       # [required] list of sources
-  - title: ""                  # [required]
-    authors: []                # [required]
-    id: ""                     # [required] link, DOI, or arXiv ID (with version)
-    type: ""                   # kind of source (textbook, preprint, blueprint, ...)
+# repository relationship - whether this repository contains the substantive
+# development or packages another formalization for a particular purpose.
+repository:
+  role: ""                     # substantive-development | thin-wrapper
+  substantive_formalization:   # fill this when role is thin-wrapper
+    id: ""                     # repository URL or another stable identifier
+    revision: ""               # immutable commit/revision when available
+
+# sources - mathematical sources, if any. Omit this section when the theorem is
+# first presented by the formalization itself. Sources may be articles, books,
+# web posts, folklore, conversations, or anything else; no arXiv record is
+# assumed.
+sources:
+  - title: ""                  # [required per source] title or short description
+    authors: []                # optional; may be unknown or inapplicable
+    id: ""                     # optional URL, DOI, ISBN, arXiv ID, citation, etc.
+    type: ""                   # article, book, web post, folklore, conversation, ...
+    location: ""               # theorem/section/page/post/answer or other locator
+    relationship: ""           # formalizes | adapts | independently-proves | background | other
     license: ""
     author_contacted: ""       # yes | no | n/a
-    prior_work: ""             # URL/citation of earlier formalization built upon
+    author_endorsement: ""     # participated | endorsed | no-response | not-contacted | declined | n/a
+
+# related_formalizations - prior or parallel formalizations, if known.
+related_formalizations:
+  - id: ""                     # [required per entry] URL or stable identifier
+    relationship: ""           # builds-on | adapts | independent | supersedes | other
+    note: ""
 
 # project status
 status:

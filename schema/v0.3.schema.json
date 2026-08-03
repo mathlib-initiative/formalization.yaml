@@ -5,7 +5,7 @@
   "description": "Repo-root metadata schema for formalization projects (v0.3). Validates a filled-in formalization.yaml.",
   "type": "object",
   "$comment": "Permissive: extra keys allowed everywhere. Required fields use minLength/minItems so a blank template is invalid.",
-  "required": ["project", "sources", "automation", "review"],
+  "required": ["project", "automation", "review"],
   "properties": {
     "version": {
       "type": "string"
@@ -22,31 +22,74 @@
           "items": { "type": "string", "minLength": 1 },
           "description": "who did the formalization"
         },
+        "responsible_maintainers": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "people responsible for the formalization repository"
+        },
         "license": { "type": "string", "minLength": 1 }
       }
+    },
+    "repository": {
+      "type": "object",
+      "description": "whether this repository contains the substantive development or wraps another formalization",
+      "properties": {
+        "role": {
+          "type": "string",
+          "enum": ["", "substantive-development", "thin-wrapper"]
+        },
+        "substantive_formalization": {
+          "type": "object",
+          "required": ["id"],
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "description": "repository URL or another stable identifier"
+            },
+            "revision": {
+              "type": "string",
+              "description": "immutable commit or revision when available"
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "role": { "const": "thin-wrapper" } }, "required": ["role"] },
+          "then": { "required": ["substantive_formalization"] }
+        }
+      ]
     },
     "sources": {
       "type": "array",
       "minItems": 1,
-      "description": "what was formalized. List of papers/textbooks/blueprints/etc.",
+      "description": "mathematical sources, if any; omit when the theorem is first presented by the formalization",
       "items": {
         "type": "object",
-        "required": ["title", "authors", "id"],
+        "required": ["title"],
         "properties": {
           "title": { "type": "string", "minLength": 1 },
           "authors": {
             "type": "array",
-            "minItems": 1,
             "items": { "type": "string", "minLength": 1 }
           },
           "id": {
             "type": "string",
             "minLength": 1,
-            "description": "link, DOI, or arXiv ID (with version)"
+            "description": "optional URL, DOI, ISBN, arXiv ID, citation, or other stable identifier"
           },
           "type": {
             "type": "string",
-            "description": "kind of source (textbook, preprint, blueprint, ...)"
+            "description": "kind of source (article, book, web post, folklore, conversation, ...)"
+          },
+          "location": {
+            "type": "string",
+            "description": "theorem, section, page, post, answer, or other locator within the source"
+          },
+          "relationship": {
+            "type": "string",
+            "enum": ["", "formalizes", "adapts", "independently-proves", "background", "other"]
           },
           "license": { "type": "string" },
           "author_contacted": {
@@ -54,10 +97,32 @@
             "enum": ["", "yes", "no", "n/a"],
             "description": "yes | no | n/a"
           },
-          "prior_work": {
+          "author_endorsement": {
             "type": "string",
-            "description": "URL/citation of earlier formalization built upon"
+            "enum": ["", "participated", "endorsed", "no-response", "not-contacted", "declined", "n/a"],
+            "description": "source-author involvement or response; separate from repository submission authorization"
           }
+        }
+      }
+    },
+    "related_formalizations": {
+      "type": "array",
+      "minItems": 1,
+      "description": "prior or parallel formalizations, if known",
+      "items": {
+        "type": "object",
+        "required": ["id"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "URL or stable identifier"
+          },
+          "relationship": {
+            "type": "string",
+            "enum": ["", "builds-on", "adapts", "independent", "supersedes", "other"]
+          },
+          "note": { "type": "string" }
         }
       }
     },
