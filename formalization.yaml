@@ -15,6 +15,10 @@ project:
   responsible_maintainers: []  # people responsible for the formalization repository
   license: ""                  # [required]
 
+# mathematical origin - whether the result predates this formalization.
+provenance:
+  result_origin: ""            # original | source-based
+
 # repository relationship - whether this repository contains the substantive
 # development or packages another formalization for a particular purpose.
 repository:
@@ -23,8 +27,8 @@ repository:
     id: ""                     # repository URL or another stable identifier
     revision: ""               # immutable commit/revision when available
 
-# sources - mathematical sources, if any. Omit this section when the theorem is
-# first presented by the formalization itself. Sources may be articles, books,
+# sources - mathematical sources, if any. Omit this section when result_origin
+# is original. Sources may be articles, books,
 # web posts, folklore, conversations, or anything else; no arXiv record is
 # assumed.
 sources:

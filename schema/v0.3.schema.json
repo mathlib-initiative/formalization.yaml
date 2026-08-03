@@ -30,6 +30,16 @@
         "license": { "type": "string", "minLength": 1 }
       }
     },
+    "provenance": {
+      "type": "object",
+      "description": "whether the mathematical result predates this formalization",
+      "properties": {
+        "result_origin": {
+          "type": "string",
+          "enum": ["", "original", "source-based"]
+        }
+      }
+    },
     "repository": {
       "type": "object",
       "description": "whether this repository contains the substantive development or wraps another formalization",

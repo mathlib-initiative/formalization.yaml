@@ -13,7 +13,8 @@ The file is meant to live **alongside the formalization it describes**. That co-
 
 `sources` is optional. A project may formalize an article, book, web post,
 folklore result, conversation, or other source, but it may also be the first
-presentation of a new theorem. Source entries therefore accept a general
+presentation of a new theorem. Record that distinction explicitly with
+`provenance.result_origin: source-based` or `original`. Source entries accept a general
 identifier or citation rather than requiring an arXiv record. Use
 `related_formalizations` separately for formal proof developments that this
 project builds on or should be compared with.
