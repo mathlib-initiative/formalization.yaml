@@ -38,6 +38,15 @@ sources:                       # [required] list of sources or an original proof
 # related_formalizations - prior or parallel formalizations, if known.
 related_formalizations: []
 
+# classification - what area of mathematics the formalized result belongs to.
+# Optional, but it is the only part of this file that lets a reader find the
+# project by subject rather than by name. Use the identifiers from the official
+# arXiv taxonomy (https://arxiv.org/category_taxonomy) and MSC2020
+# (https://msc2020.org/); list as many or as few of each as apply.
+classification:
+  arxiv: []                    # e.g. ["math.NT", "math.CO"]
+  msc2020: []                  # e.g. ["11N25", "05C35"]
+
 # project status
 status:
   scope: ""                    # describe the scope of the project
