@@ -19,7 +19,7 @@
         "authors": {
           "type": "array",
           "minItems": 1,
-          "items": { "type": "string" },
+          "items": { "type": "string", "minLength": 1 },
           "description": "who did the formalization"
         },
         "license": { "type": "string", "minLength": 1 }
@@ -37,7 +37,7 @@
           "authors": {
             "type": "array",
             "minItems": 1,
-            "items": { "type": "string" }
+            "items": { "type": "string", "minLength": 1 }
           },
           "id": {
             "type": "string",

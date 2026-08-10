@@ -42,7 +42,7 @@ status:
 
 # how it was produced. Extra per-entry fields are allowed.
 automation:                    # [required]
-  methods:                     # one entry per distinct phase/run/tool
+  methods:                     # [required] one entry per distinct phase/run/tool
     - method: ""               # [required] manual | copilot | agent | autonomous | other
       models: []               # e.g. ["claude-opus-4-7", "gpt-5"]
       framework: ""            # e.g. "Claude Code", "OpenClaw", "LeanCopilot"
