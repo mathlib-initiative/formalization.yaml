@@ -134,7 +134,11 @@
           "type": "string",
           "description": "describe the scope of the project"
         },
-        "sorry_count": { "type": "integer", "minimum": 0 },
+        "sorry_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "number of unresolved sorries in the proof development, excluding deliberate placeholders in Comparator challenge modules"
+        },
         "sorry_in_definitions": { "type": "integer", "minimum": 0 },
         "axioms": {
           "type": "array",
@@ -158,7 +162,7 @@
               "sorry_count": {
                 "type": "integer",
                 "minimum": 0,
-                "description": "number of sorries used for this declaration"
+                "description": "number of unresolved sorries in the proved declaration, excluding the deliberate placeholder in its Comparator challenge module"
               },
               "axioms": {
                 "type": "array",
