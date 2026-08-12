@@ -125,6 +125,22 @@
         }
       }
     },
+    "classification": {
+      "type": "object",
+      "description": "what area of mathematics the formalized result belongs to",
+      "properties": {
+        "arxiv": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "description": "arXiv categories, e.g. [\"math.NT\", \"math.CO\"]"
+        },
+        "msc2020": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "description": "MSC2020 codes, e.g. [\"11N25\", \"05C35\"]"
+        }
+      }
+    },
     "automation": {
       "type": "object",
       "description": "how it was produced",

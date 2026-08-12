@@ -25,6 +25,12 @@ substantive development by default. The optional relationship distinguishes
 authorship of the wrapper from authorship and maintenance of the formal proof
 itself without making ordinary projects restate the obvious.
 
+## Classification
+
+`classification` is optional, and records what the formalized result is *about*: arXiv categories and MSC2020 codes for the mathematics rather than for the source document. Every other field identifies a project by its name, its authors, or its sources, so this is the only one that lets a reader find a formalization by subject, or ask what has been formalized in a given area.
+
+List as many identifiers of each kind as genuinely apply, or omit either list. No limit is placed on how many may appear, and no check is made that a code exists. Indexes and registries that read this file will have their own rules about how many subjects they accept and which version of each vocabulary they recognise; those are their rules rather than this standard's.
+
 ## Validating
 
 The template carries a `# yaml-language-server: $schema=…` line, so editors with the YAML extension validate it live as you fill it in, with no setup beyond the extension.
