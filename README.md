@@ -19,9 +19,11 @@ requiring an arXiv record. Use `related_formalizations` separately for formal
 proof developments that this project builds on or should be compared with.
 
 When a repository is only a packaging or comparison layer around another
-formalization, use `repository.role: thin-wrapper` and identify the substantive
-development. This distinguishes authorship of the wrapper from authorship and
-maintenance of the formal proof itself.
+formalization, identify the pinned `repository.substantive_formalization`.
+Otherwise omit `repository`: the repository carrying the file is the
+substantive development by default. The optional relationship distinguishes
+authorship of the wrapper from authorship and maintenance of the formal proof
+itself without making ordinary projects restate the obvious.
 
 ## Validating
 

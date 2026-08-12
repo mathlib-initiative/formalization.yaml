@@ -15,14 +15,12 @@ project:
   responsible_maintainers: []  # people responsible for the formalization repository
   license: ""                  # [required]
 
-# repository relationship - whether this repository contains the substantive
-# development or packages another formalization for a particular purpose.
-repository:
-  role: ""                     # substantive-development | thin-wrapper
-  # For a thin wrapper, uncomment and fill this block.
-  # substantive_formalization:
-  #   id: ""                   # repository URL or another stable identifier
-  #   revision: ""             # immutable commit/revision when available
+# This repository is the substantive development by default. If it is only a
+# packaging or comparison layer, uncomment and identify the actual formalization.
+# repository:
+#   substantive_formalization:
+#     id: ""                   # repository URL or another stable identifier
+#     revision: ""             # immutable commit/revision when available
 
 # sources - what was formalized. Sources may be articles, books, web posts,
 # folklore, conversations, or anything else; no arXiv record is assumed. For a

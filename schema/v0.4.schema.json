@@ -32,7 +32,7 @@
     },
     "repository": {
       "type": "object",
-      "description": "whether this repository contains the substantive development or wraps another formalization",
+      "description": "optional relationship to a separately pinned substantive formalization; omission means this repository is the substantive development",
       "properties": {
         "role": {
           "type": "string",
@@ -66,10 +66,9 @@
           }
         },
         {
-          "if": { "required": ["substantive_formalization"] },
+          "if": { "properties": { "role": { "const": "substantive-development" } }, "required": ["role"] },
           "then": {
-            "required": ["role"],
-            "properties": { "role": { "const": "thin-wrapper" } }
+            "not": { "required": ["substantive_formalization"] }
           }
         }
       ]
