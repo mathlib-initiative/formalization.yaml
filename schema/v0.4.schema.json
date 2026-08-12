@@ -40,9 +40,11 @@
         },
         "substantive_formalization": {
           "type": "object",
+          "required": ["id"],
           "properties": {
             "id": {
               "type": "string",
+              "minLength": 1,
               "description": "repository URL or another stable identifier"
             },
             "revision": {
@@ -55,15 +57,7 @@
       "allOf": [
         {
           "if": { "properties": { "role": { "const": "thin-wrapper" } }, "required": ["role"] },
-          "then": {
-            "required": ["substantive_formalization"],
-            "properties": {
-              "substantive_formalization": {
-                "required": ["id"],
-                "properties": { "id": { "minLength": 1 } }
-              }
-            }
-          }
+          "then": { "required": ["substantive_formalization"] }
         },
         {
           "if": { "properties": { "role": { "const": "substantive-development" } }, "required": ["role"] },
