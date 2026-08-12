@@ -11,6 +11,20 @@ Drop a filled-in `formalization.yaml` at the root of your formalization repo. Fi
 
 The file is meant to live **alongside the formalization it describes**. That co-location is deliberate: anything the repo already encodes (the Lean toolchain (`lean-toolchain`), dependencies and pins (`lakefile`), build status (CI), commit history) is intentionally *not* duplicated here. This file captures the things that aren't mechanically obvious from the source tree: provenance, intent, process, and how faithfully the formalization tracks its source.
 
+`sources` is required. A project may formalize an article, book, web post,
+folklore result, conversation, or other source. When the formalization is the
+first presentation of a new theorem, record an `original-proof` source entry
+instead. Source entries accept a general identifier or citation rather than
+requiring an arXiv record. Use `related_formalizations` separately for formal
+proof developments that this project builds on or should be compared with.
+
+When a repository is only a packaging or comparison layer around another
+formalization, identify the pinned `repository.substantive_formalization`.
+Otherwise omit `repository`: the repository carrying the file is the
+substantive development by default. The optional relationship distinguishes
+authorship of the wrapper from authorship and maintenance of the formal proof
+itself without making ordinary projects restate the obvious.
+
 ## Validating
 
 The template carries a `# yaml-language-server: $schema=…` line, so editors with the YAML extension validate it live as you fill it in, with no setup beyond the extension.
