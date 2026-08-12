@@ -41,13 +41,19 @@ related_formalizations: []
 # project status
 status:
   scope: ""                    # describe the scope of the project
+  # Count unresolved proof-development sorries only. Exclude the deliberate
+  # placeholder sorry in a Comparator challenge module.
   sorry_count: 0
+  # Likewise, count only unresolved sorries in proof-development definitions,
+  # not deliberate definition holes in Comparator challenge modules.
   sorry_in_definitions: 0
   axioms: []                   # list all axioms used (including standard axioms such as `Quot.sound`)
   main_results:                # list the main results of the project
   - declaration: ""            # declaration proving this main result
     file: ""                   # file containing the declaration
-    sorry_count: 0             # number of sorries used for this declaration
+    # Count unresolved sorries in the proved declaration, not the deliberate
+    # placeholder in its Comparator challenge module.
+    sorry_count: 0
     axioms: []                 # axioms used for this result
     comparator_config: ""      # path to the comparator (leanprover/comparator) JSON config that verifies this result
     literature_dependencies:   # results this result relies on but does not prove, assumed from the literature
