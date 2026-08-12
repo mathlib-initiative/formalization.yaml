@@ -44,6 +44,8 @@ status:
   # Count unresolved proof-development sorries only. Exclude the deliberate
   # placeholder sorry in a Comparator challenge module.
   sorry_count: 0
+  # Likewise, count only unresolved sorries in proof-development definitions,
+  # not deliberate definition holes in Comparator challenge modules.
   sorry_in_definitions: 0
   axioms: []                   # list all axioms used (including standard axioms such as `Quot.sound`)
   main_results:                # list the main results of the project

@@ -139,7 +139,11 @@
           "minimum": 0,
           "description": "number of unresolved sorries in the proof development, excluding deliberate placeholders in Comparator challenge modules"
         },
-        "sorry_in_definitions": { "type": "integer", "minimum": 0 },
+        "sorry_in_definitions": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "number of unresolved sorries in proof-development definitions, excluding deliberate definition holes in Comparator challenge modules"
+        },
         "axioms": {
           "type": "array",
           "items": { "type": "string" },
