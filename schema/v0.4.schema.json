@@ -94,13 +94,13 @@
           },
           "relationship": {
             "type": "string",
-            "enum": ["", "formalizes", "adapts", "independently-proves", "background", "other"]
+            "minLength": 1,
+            "description": "free-form relationship; formalizes, adapts, independently-proves, background, and other have standard provenance meanings"
           },
           "license": { "type": "string" },
           "author_endorsement": {
             "type": "string",
-            "enum": ["", "participated", "endorsed", "no-response", "not-contacted", "declined", "n/a"],
-            "description": "source-author involvement or response; separate from repository submission authorization"
+            "description": "free-form source-author involvement or response; separate from repository submission authorization"
           }
         }
       }
@@ -119,7 +119,8 @@
           },
           "relationship": {
             "type": "string",
-            "enum": ["", "builds-on", "adapts", "independent", "supersedes", "other"]
+            "minLength": 1,
+            "description": "free-form relationship to the related formalization"
           },
           "note": { "type": "string" }
         }
@@ -156,8 +157,8 @@
             "properties": {
               "method": {
                 "type": "string",
-                "enum": ["manual", "copilot", "agent", "autonomous", "other"],
-                "description": "manual | copilot | agent | autonomous | other"
+                "minLength": 1,
+                "description": "free-form production method; common descriptions include manual, copilot, agent, autonomous, and other"
               },
               "models": {
                 "type": "array",
