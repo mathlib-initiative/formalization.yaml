@@ -96,11 +96,15 @@
             "type": "string",
             "enum": ["", "formalizes", "adapts", "independently-proves", "background", "other"]
           },
+          "note": {
+            "type": "string",
+            "description": "free-form source detail; use this to explain relationship or author_endorsement: other"
+          },
           "license": { "type": "string" },
           "author_endorsement": {
             "type": "string",
-            "enum": ["", "participated", "endorsed", "no-response", "not-contacted", "declined", "n/a"],
-            "description": "source-author involvement or response; separate from repository submission authorization"
+            "enum": ["", "participated", "endorsed", "no-response", "not-contacted", "declined", "n/a", "other"],
+            "description": "source-author involvement or response; separate from repository submission authorization; explain other in note"
           }
         }
       }

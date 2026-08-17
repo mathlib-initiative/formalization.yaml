@@ -25,6 +25,15 @@ substantive development by default. The optional relationship distinguishes
 authorship of the wrapper from authorship and maintenance of the formal proof
 itself without making ordinary projects restate the obvious.
 
+## Categories and explanatory prose
+
+Fields such as source relationships, source-author endorsement, relationships
+to other formalizations, and automation methods use small canonical
+vocabularies. These values are intended to remain machine-readable: choose the
+closest category, using `other` when none applies. Put the exact nuance in the
+adjacent `note`, `tool_setup`, `prompting_notes`, or automation `notes` field.
+This preserves both reliable indexing and the project's own description.
+
 ## Classification
 
 `classification` is optional, and records what the formalized result is *about*: arXiv categories and MSC2020 codes for the mathematics rather than for the source document. Every other field identifies a project by its name, its authors, or its sources, so this is the only one that lets a reader find a formalization by subject, or ask what has been formalized in a given area.
