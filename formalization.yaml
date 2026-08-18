@@ -27,7 +27,10 @@ project:
 # theorem first presented by this formalization, use type: "original-proof".
 sources:                       # [required] list of sources or an original proof
   - title: ""                  # [required per source] title or short description
-    authors: []                # optional; may be unknown or inapplicable
+    authors: []                # optional bibliographic authors; may be unknown or inapplicable
+    contributors:              # optional non-author credits; repeat a person for multiple roles
+      - name: ""
+        role: ""               # free-form, e.g. editor or problem-proposer
     id: ""                     # optional URL, DOI, ISBN, arXiv ID, citation, etc.
     type: ""                   # article, book, web post, folklore, conversation, original-proof, ...
     location: ""               # theorem/section/page/post/answer or other locator
