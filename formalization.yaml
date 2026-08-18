@@ -11,6 +11,7 @@ version: "v0.4"
 # project - the formalization itself (not the source).
 project:
   name: ""                     # [required]
+  description: ""              # mathematical content and principal results
   authors: []                  # [required] who did the formalization
   responsible_maintainers: []  # people responsible for the formalization repository
   license: ""                  # [required]
