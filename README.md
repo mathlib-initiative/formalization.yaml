@@ -9,9 +9,6 @@ Drop a filled-in `formalization.yaml` at the root of your formalization repo. Fi
 1. Copy `formalization.yaml` to the root of your formalization repo.
 2. Fill in every field marked `[required]`. Fill in as much of the rest as is useful.
 
-For a fully manual project, use `method: manual` under `automation.methods`,
-and omit automation-specific fields that do not apply.
-
 The file is meant to live **alongside the formalization it describes**. That co-location is deliberate: anything the repo already encodes (the Lean toolchain (`lean-toolchain`), dependencies and pins (`lakefile`), build status (CI), commit history) is intentionally *not* duplicated here. This file captures the things that aren't mechanically obvious from the source tree: provenance, intent, process, and how faithfully the formalization tracks its source.
 
 `sources` is required. A project may formalize an article, book, web post,
@@ -34,6 +31,9 @@ Otherwise omit `repository`: the repository carrying the file is the
 substantive development by default. The optional relationship distinguishes
 authorship of the wrapper from authorship and maintenance of the formal proof
 itself without making ordinary projects restate the obvious.
+
+For a fully manual project, use `method: manual` under `automation.methods`,
+and omit automation-specific fields that do not apply.
 
 ## Categories and explanatory prose
 
