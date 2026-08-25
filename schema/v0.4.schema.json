@@ -16,6 +16,10 @@
       "required": ["name", "authors", "license"],
       "properties": {
         "name": { "type": "string", "minLength": 1 },
+        "description": {
+          "type": "string",
+          "description": "a concise account of the mathematical content and principal results of the formalization"
+        },
         "authors": {
           "type": "array",
           "minItems": 1,
