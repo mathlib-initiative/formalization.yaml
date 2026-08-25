@@ -28,9 +28,7 @@ project:
 sources:                       # [required] list of sources or an original proof
   - title: ""                  # [required per source] title or short description
     authors: []                # optional bibliographic authors; may be unknown or inapplicable
-    contributors:              # optional non-author credits; repeat a person for multiple roles
-      - name: ""
-        role: ""               # free-form, e.g. editor or problem-proposer
+    contributors: []           # optional non-author credits; each entry has a name and free-form role
     id: ""                     # optional URL, DOI, ISBN, arXiv ID, citation, etc.
     type: ""                   # article, book, web post, folklore, conversation, original-proof, ...
     location: ""               # theorem/section/page/post/answer or other locator
