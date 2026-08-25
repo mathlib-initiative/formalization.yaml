@@ -18,6 +18,13 @@ instead. Source entries accept a general identifier or citation rather than
 requiring an arXiv record. Use `related_formalizations` separately for formal
 proof developments that this project builds on or should be compared with.
 
+Within a source entry, use `authors` only for bibliographic authorship. Use
+`contributors` for other credited roles, with one `name` and free-form
+`role` per entry; examples include `editor` and `problem-proposer`. Repeat
+a person when they have several roles. Distinct works, such as an open-problem
+collection and a later solution paper, should still be separate source entries
+so that each keeps its own identifier and relationship to the formalization.
+
 When a repository is only a packaging or comparison layer around another
 formalization, identify the pinned `repository.substantive_formalization`.
 Otherwise omit `repository`: the repository carrying the file is the
