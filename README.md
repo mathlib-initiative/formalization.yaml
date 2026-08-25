@@ -2,6 +2,9 @@
 
 A self-reporting standard for formalization projects, whether developed manually or with automation.
 
+Fully manual projects are in scope: use `method: manual` under
+`automation.methods`, and omit automation-specific fields that do not apply.
+
 Drop a filled-in `formalization.yaml` at the root of your formalization repo. Fill in the `[required]` fields; the rest are optional. The point is to set an expectation that projects report on what was formalized, how, and how faithfully; without requiring everyone to invent their own format.
 
 ## How to use it
