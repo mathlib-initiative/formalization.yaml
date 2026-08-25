@@ -32,8 +32,9 @@ sources:                       # [required] list of sources or an original proof
     type: ""                   # article, book, web post, folklore, conversation, original-proof, ...
     location: ""               # theorem/section/page/post/answer or other locator
     relationship: ""           # formalizes | adapts | independently-proves | background | other
+    note: ""                   # optional detail; explain relationship or author_endorsement: other here
     license: ""
-    author_endorsement: ""     # participated | endorsed | no-response | not-contacted | declined | n/a
+    author_endorsement: ""     # participated | endorsed | no-response | not-contacted | declined | n/a | other
 
 # related_formalizations - prior or parallel formalizations, if known.
 related_formalizations: []
