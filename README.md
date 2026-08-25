@@ -1,6 +1,6 @@
 # formalization.yaml
 
-A self-reporting standard for autoformalization projects.
+A self-reporting standard for formalization projects.
 
 Drop a filled-in `formalization.yaml` at the root of your formalization repo. Fill in the `[required]` fields; the rest are optional. The point is to set an expectation that projects report on what was formalized, how, and how faithfully; without requiring everyone to invent their own format.
 
@@ -31,6 +31,9 @@ Otherwise omit `repository`: the repository carrying the file is the
 substantive development by default. The optional relationship distinguishes
 authorship of the wrapper from authorship and maintenance of the formal proof
 itself without making ordinary projects restate the obvious.
+
+For a fully manual project, use `method: manual` under `automation.methods`,
+and omit automation-specific fields that do not apply.
 
 ## Categories and explanatory prose
 
