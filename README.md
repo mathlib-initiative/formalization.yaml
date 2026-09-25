@@ -55,6 +55,16 @@ This preserves both reliable indexing and the project's own description.
 
 List as many identifiers of each kind as genuinely apply, or omit either list. No limit is placed on how many may appear, and no check is made that a code exists. Indexes and registries that read this file will have their own rules about how many subjects they accept and which version of each vocabulary they recognise; those are their rules rather than this standard's.
 
+## Errata
+
+Formalizing a source sometimes shows that the source is wrong. The optional
+`errata` list records each such error: the `sources` entry it appears in (by
+`id`), its `location`, the erroneous `statement`, a `note` on what is wrong,
+the `lean` declaration where the repair is formalized, and a `repair` giving a
+`note` on how the error is fixed and the `source` where that fix is published,
+if any. A work cited only for a repair gets `relationship: repair`. Omit
+`repair` when no repair is known or needed.
+
 ## Validating
 
 The template carries a `# yaml-language-server: $schema=…` line, so editors with the YAML extension validate it live as you fill it in, with no setup beyond the extension.

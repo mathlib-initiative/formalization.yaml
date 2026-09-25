@@ -115,7 +115,7 @@
           },
           "relationship": {
             "type": "string",
-            "enum": ["", "formalizes", "adapts", "independently-proves", "background", "other"]
+            "enum": ["", "formalizes", "adapts", "independently-proves", "background", "repair", "other"]
           },
           "note": {
             "type": "string",
@@ -310,6 +310,52 @@
         "divergences": {
           "type": "string",
           "description": "places the formalization deviates from sources: generalizations, weakened hypotheses, renamed lemmas, etc."
+        }
+      }
+    },
+    "errata": {
+      "type": "array",
+      "description": "errors found in the sources while formalizing, and their repair",
+      "items": {
+        "type": "object",
+        "required": ["source", "statement"],
+        "properties": {
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "description": "`id` of the `sources` entry containing the error"
+          },
+          "location": {
+            "type": "string",
+            "description": "where in the source the erroneous claim appears"
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 1,
+            "description": "the erroneous claim as the source states it"
+          },
+          "lean": {
+            "type": "string",
+            "description": "Lean declaration where the repair is formalized"
+          },
+          "note": {
+            "type": "string",
+            "description": "what is wrong and how certain the project is"
+          },
+          "repair": {
+            "type": "object",
+            "description": "omit when no repair is known or needed",
+            "properties": {
+              "source": {
+                "type": "string",
+                "description": "`id` of the `sources` entry where the repair is published, if any"
+              },
+              "note": {
+                "type": "string",
+                "description": "how the error is repaired"
+              }
+            }
+          }
         }
       }
     },
