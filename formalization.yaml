@@ -33,7 +33,7 @@ sources:                       # [required] list of sources or an original proof
     id: ""                     # optional URL, DOI, ISBN, arXiv ID, citation, etc.
     type: ""                   # article, book, web post, folklore, conversation, original-proof, ...
     location: ""               # theorem/section/page/post/answer or other locator
-    relationship: ""           # formalizes | adapts | independently-proves | background | other
+    relationship: ""           # formalizes | adapts | independently-proves | background | repair | other
     note: ""                   # optional detail; explain relationship or author_endorsement: other here
     license: ""
     author_endorsement: ""     # participated | endorsed | no-response | not-contacted | declined | n/a | other
@@ -90,6 +90,18 @@ automation:                    # [required]
 # fidelity
 fidelity:
   divergences: ""              # places the formalization deviates from sources: generalizations, weakened hypotheses, renamed lemmas, etc.
+
+# errata - errors found in the sources while formalizing, and their repair.
+# Replace [] with one entry per error, shaped like the example below.
+errata: []
+#   - source: ""               # [required per erratum] `id` of the `sources` entry containing the error
+#     location: ""             # where in the source the claim appears
+#     statement: ""            # [required per erratum] the erroneous claim as the source states it
+#     lean: ""                 # Lean declaration where the repair is formalized
+#     note: ""                 # what is wrong and how certain the project is
+#     repair:                  # omit when no repair is known or needed
+#       source: ""             # `id` of the `sources` entry where the repair is published, if any
+#       note: ""               # how the error is repaired
 
 # review status
 review:
